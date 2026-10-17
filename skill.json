@@ -1,0 +1,40 @@
+{
+  "name": "genpark-enterprise-compliance-data-retention-gdpr-erasure-sentinel-skill",
+  "version": "1.0.0",
+  "description": "Enterprise Work Agent GDPR Right-to-be-Forgotten & CCPA Erasure Sentinel. Audits distributed data stores (relational DBs, vector embeddings, activity logs), checks legal hold exemptions, executes cascading pseudo-anonymization, and anchors cryptographic HMAC-SHA256 Proofs of Erasure.",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.llinkedin.com/company/92955550",
+  "tools": [
+    {
+      "name": "execute_gdpr_erasure_workflow",
+      "description": "Execute GDPR Right-to-be-Forgotten erasure audit, legal hold validation, and cryptographic proof generation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "subject_id": {
+            "type": "string",
+            "description": "Data subject ID (e.g. 'USR-9801')."
+          },
+          "data_stores": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Datastores with store_name, records_count, and contains_pii."
+          },
+          "active_legal_holds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Active litigation or tax retention hold identifiers."
+          }
+        },
+        "required": [
+          "subject_id",
+          "data_stores"
+        ]
+      }
+    }
+  ]
+}
